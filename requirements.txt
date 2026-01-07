@@ -8,9 +8,10 @@ Flask-SQLAlchemy==3.1.1
 
 python-dotenv==1.0.1
 
-Pillow==10.3.0       # for image handling (optional but safe)
-numpy==1.26.4        # required for ML fallback model
-pandas==2.2.2        # if ML model uses pandas
-scikit-learn==1.4.2  # ML model support
+Pillow==10.3.0
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.4.2
 
-gunicorn==21.2.0     # REQUIRED for Render deployment
+gunicorn==21.2.0
+
