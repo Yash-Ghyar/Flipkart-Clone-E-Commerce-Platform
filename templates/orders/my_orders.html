@@ -1,0 +1,65 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+
+<h3 class="fw-bold mb-4">My Orders</h3>
+
+{% if orders %}
+    {% for order in orders %}
+    <div class="card shadow-sm p-3 mb-4 rounded-4" style="max-width: 900px;">
+
+        <div class="d-flex align-items-center gap-3">
+
+            <!-- Product Image -->
+            {% if order.product and order.product.image_filename %}
+                <img src="{{ url_for('static', filename='uploads/images/' ~ order.product.image_filename) }}"
+                     class="rounded"
+                     style="width: 110px; height: 110px; object-fit: cover; border: 1px solid #eee;">
+            {% else %}
+                <div class="bg-light rounded d-flex align-items-center justify-content-center"
+                     style="width: 110px; height: 110px; border: 1px solid #eee;">
+                    <span class="text-muted small">No Image</span>
+                </div>
+            {% endif %}
+
+            <!-- Order Details -->
+            <div class="flex-grow-1">
+
+                <h5 class="fw-bold mb-1">
+                    {{ order.product.name if order.product else "Product Removed" }}
+                </h5>
+
+                <p class="text-muted small mb-2">
+                    {{ order.product.category if order.product else "" }}
+                </p>
+
+                <p class="mb-1 fw-semibold">
+                    Quantity: <span class="text-dark">{{ order.quantity }}</span>
+                </p>
+
+                <!-- Dynamic Status Badge -->
+                <p class="mb-1 fw-semibold">
+                    Status:
+                    {% if order.status == "Delivered" %}
+                        <span class="badge bg-success">{{ order.status }}</span>
+                    {% elif order.status == "Shipped" %}
+                        <span class="badge bg-primary">{{ order.status }}</span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">{{ order.status }}</span>
+                    {% endif %}
+                </p>
+
+                <p class="text-muted small">
+                    Ordered on {{ order.created_at.strftime('%d %b %Y') }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+    {% endfor %}
+{% else %}
+    <p class="text-muted">You have not placed any orders yet.</p>
+{% endif %}
+
+{% endblock %}

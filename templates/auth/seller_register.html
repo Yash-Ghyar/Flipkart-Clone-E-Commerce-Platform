@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+
+<div class="card shadow p-4 mx-auto" style="max-width:450px;">
+    <h3 class="text-center fw-bold mb-4">Seller Registration</h3>
+
+    <form method="POST" action="{{ url_for('users.seller_register') }}">
+
+        <input type="hidden" name="role" value="seller">
+
+        <label class="form-label fw-semibold">Full Name</label>
+        <input type="text" name="name" class="form-control mb-3" required>
+
+        <label class="form-label fw-semibold">Email</label>
+        <input type="email" name="email" class="form-control mb-3" required>
+
+        <label class="form-label fw-semibold">Password</label>
+        <input type="password" name="password" class="form-control mb-4" required>
+
+        <button class="btn btn-primary w-100">Register as Seller</button>
+
+        <p class="text-center mt-3">
+            Already a seller?  
+            <a href="{{ url_for('users.login') }}" class="fw-semibold text-primary">Login</a>
+        </p>
+
+    </form>
+</div>
+
+{% endblock %}

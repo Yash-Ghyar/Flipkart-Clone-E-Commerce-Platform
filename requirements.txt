@@ -1,13 +1,16 @@
 Flask==3.0.3
-Flask-WTF==1.2.1
-WTForms==3.1.2
-Werkzeug==3.0.3
-pandas==2.2.3
-openpyxl==3.1.5
-itsdangerous==2.2.0
+Werkzeug==3.0.1
 Jinja2==3.1.4
-MarkupSafe==2.1.5
-python-dateutil==2.9.0.post0
-numpy==2.1.2
-Flask-Cors==4.0.1
-gunicorn==23.0.0
+itsdangerous==2.2.0
+
+SQLAlchemy==2.0.29
+Flask-SQLAlchemy==3.1.1
+
+python-dotenv==1.0.1
+
+Pillow==10.3.0       # for image handling (optional but safe)
+numpy==1.26.4        # required for ML fallback model
+pandas==2.2.2        # if ML model uses pandas
+scikit-learn==1.4.2  # ML model support
+
+gunicorn==21.2.0     # REQUIRED for Render deployment

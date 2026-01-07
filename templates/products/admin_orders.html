@@ -1,0 +1,77 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+
+<h3 class="fw-bold mb-4">Admin — All Orders</h3>
+
+<table class="table table-hover shadow-sm align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Product</th>
+            <th>Customer</th>
+            <th>Seller</th>
+            <th>Qty</th>
+            <th>Status</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    {% for order in orders %}
+        <tr>
+
+            <!-- PRODUCT (with image) -->
+            <td class="d-flex align-items-center">
+
+                {% if order.product and order.product.image_filename %}
+                    <img src="{{ url_for('static', filename='uploads/images/' ~ order.product.image_filename) }}"
+                         class="rounded me-2"
+                         style="width:50px; height:50px; object-fit:cover;">
+                {% else %}
+                    <div class="bg-light rounded me-2 d-flex justify-content-center align-items-center"
+                         style="width:50px; height:50px;">
+                        <span class="text-muted small">No Img</span>
+                    </div>
+                {% endif %}
+
+                {{ order.product.name if order.product else "Product Deleted" }}
+            </td>
+
+            <!-- CUSTOMER NAME -->
+            <td>{{ users[order.user_id].name }}</td>
+
+            <!-- SELLER NAME -->
+            <td>
+                {% if order.product and order.product.seller %}
+                    {{ order.product.seller.name }}
+                {% else %}
+                    Admin
+                {% endif %}
+            </td>
+
+            <!-- QUANTITY -->
+            <td>{{ order.quantity }}</td>
+
+            <!-- STATUS BADGE -->
+            <td>
+                {% if order.status == "Pending" %}
+                    <span class="badge bg-warning text-dark">Pending</span>
+                {% elif order.status == "Shipped" %}
+                    <span class="badge bg-primary">Shipped</span>
+                {% elif order.status == "Delivered" %}
+                    <span class="badge bg-success">Delivered</span>
+                {% else %}
+                    <span class="badge bg-danger">Cancelled</span>
+                {% endif %}
+            </td>
+
+            <!-- DATE -->
+            <td>{{ order.created_at.strftime('%d %b %Y') }}</td>
+
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}

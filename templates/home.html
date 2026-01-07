@@ -1,15 +1,110 @@
-{% extends "base.html" %}
-{% block title %}Home | Secure E-Commerce{% endblock %}
+{% extends "layouts/base.html" %}
 {% block content %}
-<section class="hero-section d-flex align-items-center justify-content-center text-center text-light">
-  <div class="container py-5">
-    <h1 class="display-4 fw-bold">🛡️ Secure E-Commerce</h1>
-    <p class="lead text-muted mb-4">A cyber-secure platform for Admins, Sellers & Customers — built with Flask.</p>
-    <div>
-      <a class="btn btn-primary btn-lg me-2" href="{{ url_for('users_bp.login') }}">Login</a>
-      <a class="btn btn-outline-light btn-lg" href="{{ url_for('users_bp.register') }}">Register</a>
-      <a class="btn btn-success btn-lg ms-2" href="{{ url_for('products_bp.list_products') }}">Browse Products</a>
+
+<!-- HERO BANNER -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="p-4 rounded shadow-sm" style="background: #fff;">
+            <h3 class="fw-bold mb-2">Welcome to Flipkart Clone</h3>
+            <p class="text-muted mb-0">
+                Shop mobiles, laptops, fashion and more with ML-powered recommendations.
+            </p>
+        </div>
     </div>
-  </div>
-</section>
+</div>
+
+<!-- SHOP BY CATEGORIES - ORIGINAL CLEAN UI RESTORED -->
+<h4 class="fw-bold mb-3">📦 Shop by Categories</h4>
+
+<div class="row text-center mb-4">
+
+    <div class="col-4 col-md-2 mb-3">
+        <div class="p-3 bg-white rounded shadow-sm category-box">
+            <div class="fs-3">📱</div>
+            <div class="fw-semibold mt-2">Mobiles</div>
+        </div>
+    </div>
+
+    <div class="col-4 col-md-2 mb-3">
+        <div class="p-3 bg-white rounded shadow-sm category-box">
+            <div class="fs-3">💻</div>
+            <div class="fw-semibold mt-2">Laptops</div>
+        </div>
+    </div>
+
+    <div class="col-4 col-md-2 mb-3">
+        <div class="p-3 bg-white rounded shadow-sm category-box">
+            <div class="fs-3">👕</div>
+            <div class="fw-semibold mt-2">Clothing</div>
+        </div>
+    </div>
+
+    <div class="col-4 col-md-2 mb-3">
+        <div class="p-3 bg-white rounded shadow-sm category-box">
+            <div class="fs-3">🎧</div>
+            <div class="fw-semibold mt-2">Electronics</div>
+        </div>
+    </div>
+
+    <div class="col-4 col-md-2 mb-3">
+        <div class="p-3 bg-white rounded shadow-sm category-box">
+            <div class="fs-3">👟</div>
+            <div class="fw-semibold mt-2">Shoes</div>
+        </div>
+    </div>
+
+    <div class="col-4 col-md-2 mb-3">
+        <div class="p-3 bg-white rounded shadow-sm category-box">
+            <div class="fs-3">🏠</div>
+            <div class="fw-semibold mt-2">Home</div>
+        </div>
+    </div>
+</div>
+
+<!-- TRENDING PRODUCTS -->
+<h4 class="fw-bold mb-3 mt-4">🔥 Trending Products</h4>
+
+<div class="row g-4">
+    {% if trending_products %}
+        {% for product in trending_products %}
+        <div class="col-md-3">
+            <div class="card shadow-sm rounded-4 p-2 h-100">
+
+                {% if product.image_filename %}
+                    <img src="{{ url_for('static', filename='uploads/images/' ~ product.image_filename) }}"
+                         class="img-fluid rounded mb-2"
+                         style="height: 200px; object-fit: cover;">
+                {% else %}
+                    <div class="bg-light rounded mb-2 d-flex align-items-center justify-content-center"
+                         style="height: 200px;">
+                        <span class="text-muted small">No Image</span>
+                    </div>
+                {% endif %}
+
+                <h6 class="fw-semibold">{{ product.name }}</h6>
+                <p class="text-muted small mb-1">{{ product.category }}</p>
+                <h5 class="fw-bold text-primary mb-2">₹{{ product.price }}</h5>
+
+                <a href="{{ url_for('products.product_details', product_id=product.id) }}"
+                   class="btn btn-primary w-100 mt-auto">View Product</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-muted">No products found.</p>
+    {% endif %}
+</div>
+
+<style>
+/* PERFECT BOXES LIKE YOUR OLD UI */
+.category-box {
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+.category-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+</style>
+
 {% endblock %}

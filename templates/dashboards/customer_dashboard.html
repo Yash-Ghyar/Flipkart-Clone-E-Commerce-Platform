@@ -1,0 +1,108 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+
+<h3 class="fw-bold mb-4">Customer Dashboard</h3>
+
+<!-- 🔥 My Orders Button -->
+<div class="d-flex justify-content-end mb-3">
+    <a href="{{ url_for('orders.my_orders') }}"
+       class="btn btn-primary fw-semibold px-4"
+       style="background:#2874f0;">
+        My Orders
+    </a>
+</div>
+
+<!-- Stats cards -->
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="card p-3 shadow-sm">
+            <h6 class="text-muted mb-1">Total Orders</h6>
+            <h3 class="fw-bold mb-0">{{ total_orders }}</h3>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3 shadow-sm">
+            <h6 class="text-muted mb-1">Product Categories</h6>
+            <h3 class="fw-bold mb-0">{{ total_categories }}</h3>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3 shadow-sm">
+            <h6 class="text-muted mb-1">Available Products</h6>
+            <h3 class="fw-bold mb-0">{{ total_products }}</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Orders -->
+<h4 class="fw-bold mt-3 mb-3">Recent Orders</h4>
+
+{% if recent_orders %}
+    <div class="row g-3 mb-4">
+        {% for order in recent_orders %}
+        <div class="col-md-6">
+            <div class="card p-3 shadow-sm d-flex flex-row align-items-center">
+
+                {% if order.product and order.product.image_filename %}
+                    <img src="{{ url_for('static', filename='uploads/images/' ~ order.product.image_filename) }}"
+                         class="rounded me-3"
+                         style="width:80px; height:80px; object-fit:cover;">
+                {% else %}
+                    <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center"
+                         style="width:80px; height:80px;">
+                        <span class="text-muted small">No Image</span>
+                    </div>
+                {% endif %}
+
+                <div>
+                    <h6 class="mb-1 fw-semibold">
+                        {{ order.product.name if order.product else 'Product removed' }}
+                    </h6>
+                    <p class="mb-0 text-muted small">
+                        Qty: {{ order.quantity }} •
+                        Placed on {{ order.created_at.strftime('%d-%m-%Y') }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="text-muted">No recent orders.</p>
+{% endif %}
+
+<!-- Recommended For You -->
+<h4 class="fw-bold mt-4 mb-3">Recommended For You</h4>
+
+<div class="row g-4 mb-4">
+    {% if recommended_products is defined and recommended_products %}
+        {% for product in recommended_products %}
+        <div class="col-md-3">
+            <div class="card shadow-sm rounded-4 p-2 h-100">
+
+                {% if product.image_filename %}
+                    <img src="{{ url_for('static', filename='uploads/images/' ~ product.image_filename) }}"
+                         class="img-fluid rounded mb-2"
+                         style="height: 200px; object-fit: cover;">
+                {% else %}
+                    <div class="bg-light rounded mb-2 d-flex align-items-center justify-content-center"
+                         style="height: 200px;">
+                        <span class="text-muted small">No Image</span>
+                    </div>
+                {% endif %}
+
+                <h6 class="fw-semibold">{{ product.name }}</h6>
+                <p class="text-muted small mb-1">{{ product.category }}</p>
+                <h6 class="fw-bold text-primary mb-2">₹{{ product.price }}</h6>
+
+                <a href="{{ url_for('products.product_details', product_id=product.id) }}"
+                   class="btn btn-primary w-100 mt-auto">View</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-muted">Add some orders to get personalised recommendations.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

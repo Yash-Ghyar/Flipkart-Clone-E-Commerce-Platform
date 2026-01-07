@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-lg p-4" style="width: 380px; border-radius: 10px;">
+        <h4 class="text-center fw-bold mb-3" style="color: #2874f0;">Login</h4>
+
+        <form method="POST" action="{{ url_for('users.login') }}">
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Email</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Password</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+
+            <button class="btn btn-primary w-100 fw-bold" style="background: #2874f0;">
+                Login
+            </button>
+
+            <p class="text-center mt-3">
+                New user?
+                <a href="{{ url_for('users.register') }}" class="text-primary fw-semibold">Create an account</a>
+            </p>
+
+            <p class="text-center">
+                Register as Seller?
+                <a href="{{ url_for('users.seller_register') }}" class="text-primary fw-semibold">Click here</a>
+            </p>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

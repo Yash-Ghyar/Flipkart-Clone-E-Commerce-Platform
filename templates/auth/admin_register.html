@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h3 class="text-center fw-bold mb-3">Admin Registration</h3>
+
+    <div class="card shadow-sm p-4 mx-auto" style="max-width: 500px;">
+
+        <form method="POST" action="{{ url_for('users.secret_admin_register') }}">
+            
+            <div class="mb-3">
+                <label class="form-label fw-bold">Email</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <button class="btn btn-primary w-100">Create Admin</button>
+
+        </form>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,11 +1,28 @@
-{% extends "base.html" %}
-{% block title %}Error | Secure E-Commerce{% endblock %}
+{# templates/error.html #}
+{% extends "layouts/base.html" %}
+
 {% block content %}
-<div class="container py-5 text-center">
-  <div class="card shadow-sm p-4">
-    <h2 class="text-danger">⚠️ {{ message }}</h2>
-    <p class="text-muted mt-2">If you think this is a mistake, please contact the admin.</p>
-    <a class="btn btn-secondary mt-3" href="{{ url_for('home') }}">Return Home</a>
-  </div>
+
+<div class="text-center my-5">
+
+  <h1 class="display-4 fw-bold text-danger mb-3">
+    Oops! Something went wrong ⚠️
+  </h1>
+
+  {% if message %}
+    <p class="lead text-muted mb-4">
+      {{ message }}
+    </p>
+  {% else %}
+    <p class="lead text-muted mb-4">
+      An unexpected error occurred. Please try again in a moment.
+    </p>
+  {% endif %}
+
+  <a href="{{ url_for('home') }}" class="btn btn-primary btn-lg mt-2">
+    ⬅ Back to Home
+  </a>
+
 </div>
+
 {% endblock %}

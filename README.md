@@ -1,45 +1,120 @@
-🛡️ Secure E-Commerce Platform using Flask
+📦 Flipkart Clone – Full Stack E-Commerce Platform
+(Flask Backend + HTML/CSS + Bootstrap Frontend + SQLAlchemy + ML)
 
-A role-based Secure E-Commerce Web Application built with Flask, featuring Admin, Seller, and Customer dashboards.
-Includes strong cybersecurity measures (CSRF protection, password hashing, and security logs) with Excel file storage for users, products, and orders.
+A complete full-stack e-commerce web application built using Flask (Backend) and HTML, CSS, Bootstrap (Frontend) with a SQLAlchemy ORM and ML-based Product Recommendation System.
+Includes Customer Portal, Seller Portal, and Admin Panel.
 
-🧠 Tech Stack
+🚀 Key Features
+👤 Customer Features
 
-Frontend: HTML, CSS, Bootstrap
-Backend: Flask, Python
-Data Handling: Pandas, OpenPyXL
-Security: Flask-WTF, Werkzeug, CSRFProtect
+Customer register/login
 
-🚀 Features
+Browse all products + search + category filter
 
-🧑‍💼 Admin can manage users and view all orders
+View product details
 
-🏪 Sellers can add, edit, or delete products and track stock
+Add orders
 
-🛒 Customers can browse and buy products securely
+My Orders page
 
-🔐 CSRF Protection and Password Hashing for security
+Track order status
 
-📊 Excel-based lightweight database
+Smart recommendations using ML + fallback
 
-⚠️ Security log tracking admin/user actions
+Clean customer dashboard
 
-📦 Installation
-git clone https://github.com/Yash-Ghyar/Secure-Ecommerce-Flask.git
-cd Secure-Ecommerce-Flask
+🛒 Seller Features
+
+Seller register/login
+
+Add / Edit / Delete products
+
+Upload product images
+
+View customer orders for their products
+
+Update order status (Pending → Shipped → Delivered)
+
+Delete orders
+
+🛠️ Admin Features
+
+Secret admin registration page (localhost-only)
+
+View & manage all users
+
+Change user roles (customer / seller / admin)
+
+Delete users
+
+Manage all products
+
+Manage all orders
+
+Admin dashboard with system stats
+
+🎨 Frontend (HTML + CSS + Bootstrap)
+
+The entire UI is built using:
+
+HTML5
+
+CSS3
+
+Bootstrap 5
+
+Responsive components & cards
+
+Clean, modern Flipkart-style layout
+
+All pages use Jinja2 templates for dynamic rendering.
+
+💻 Backend (Flask + SQLAlchemy)
+
+Flask app factory pattern
+
+SQLAlchemy ORM models
+
+Route-based Blueprints for users, products, orders, admin
+
+Secure password hashing
+
+Role-based route protection
+
+Image upload handling
+
+🤖 Recommendation Engine (Machine Learning)
+Works in 3 Levels:
+
+1️⃣ ML-based recommendations (if reco_model.pkl exists)
+2️⃣ Category-based fallback recommendations
+3️⃣ Latest trending products fallback
+
+Guarantees meaningful product suggestions every time.
+
+🔐 Security
+
+Password hashing using Werkzeug
+
+Authenticated + role-restricted routes
+
+Secure image file handling
+
+Admin route protected by IP restriction
+
+⚙️ How to Run the Project
+1️⃣ Install requirements
 pip install -r requirements.txt
-python e-commerce.py
+
+2️⃣ Create the database
+python
+from app import app
+from models import db
+with app.app_context():
+    db.create_all()
+
+3️⃣ Start the application
+python app.py
 
 
-Then open:
-👉 http://127.0.0.1:5000
-
-🔥 Highlights
-
-Modern Bootstrap 5 UI
-
-Flash message alerts
-
-Image uploads for products
-
-Session-based authentication
+Visit: http://127.0.0.1:5000
