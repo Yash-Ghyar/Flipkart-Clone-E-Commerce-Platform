@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 📦 Flipkart Clone – Full Stack E-Commerce Platform
 (Flask Backend + HTML/CSS + Bootstrap Frontend + SQLAlchemy + ML)
 
@@ -118,3 +119,6 @@ python app.py
 
 
 Visit: http://127.0.0.1:5000
+=======
+# Flipkart-Clone-E-Commerce-Platform
+>>>>>>> 2c68d290a20b91e35c7022da8bb9ed130d4ce092
