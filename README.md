@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 📦 Flipkart Clone – Full Stack E-Commerce Platform
 (Flask Backend + HTML/CSS + Bootstrap Frontend + SQLAlchemy + ML)
 
