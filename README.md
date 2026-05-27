@@ -1,123 +1,155 @@
-📦 Flipkart Clone – Full Stack E-Commerce Platform
-(Flask Backend + HTML/CSS + Bootstrap Frontend + SQLAlchemy + ML)
+🛒 Flipkart Clone — AI-Powered Full Stack E-Commerce Platform
+Intelligent Multi-Role E-Commerce System with Machine Learning Recommendations
 
-A complete full-stack e-commerce web application built using Flask (Backend) and HTML, CSS, Bootstrap (Frontend) with a SQLAlchemy ORM and ML-based Product Recommendation System.
-Includes Customer Portal, Seller Portal, and Admin Panel.
+A production-inspired full-stack e-commerce platform designed to simulate real-world online marketplaces.
 
-🚀 Key Features
-👤 Customer Features
+Built using Flask, SQLAlchemy, HTML/CSS, Bootstrap, and Machine Learning, the application enables seamless shopping experiences through dedicated Customer, Seller, and Admin portals, integrated with an intelligent recommendation engine.
 
-Customer register/login
+The system follows a modular architecture with secure authentication, scalable backend design, and dynamic user interaction.
 
-Browse all products + search + category filter
+🚀 Project Overview
 
-View product details
+This platform replicates core functionalities of modern e-commerce applications by combining:
 
-Add orders
+✅ Customer Shopping Experience
+✅ Seller Product Management
+✅ Administrative Control Panel
+✅ AI-Based Recommendation Engine
+✅ Secure Role-Based Access System
 
-My Orders page
+✨ Features
+👤 Customer Portal
+Secure Registration & Login
+Browse Complete Product Catalog
+Search Products & Category Filtering
+Product Details View
+Place Orders
+Order Tracking System
+View Order History
+Personalized Product Recommendations
+Responsive Customer Dashboard
+🛍️ Seller Portal
+Seller Registration & Authentication
+Add New Products
+Edit Existing Listings
+Delete Products
+Product Image Upload
+Manage Customer Orders
+Update Delivery Status:
+Pending
+Shipped
+Delivered
+🛠️ Admin Control Panel
+Restricted Admin Access
+User Management System
+Role Assignment
+Product Monitoring
+Order Management
+Platform Analytics Dashboard
+System Statistics Overview
+🤖 Intelligent Recommendation System
 
-Track order status
+Implemented a Hybrid Multi-Level Recommendation Architecture to ensure recommendation continuity.
 
-Smart recommendations using ML + fallback
+Level 1 — Machine Learning Recommendation
 
-Clean customer dashboard
+Generates personalized product suggestions using trained recommendation models.
 
-🛒 Seller Features
+Level 2 — Category Similarity Recommendation
 
-Seller register/login
+Recommends relevant products from similar categories.
 
-Add / Edit / Delete products
+Level 3 — Trending Product Engine
 
-Upload product images
+Displays recently popular products when ML predictions are unavailable.
 
-View customer orders for their products
+Result:
 
-Update order status (Pending → Shipped → Delivered)
+Improved recommendation availability and better simulated shopping personalization.
 
-Delete orders
+🏗️ System Architecture
+User
+ ↓
+Frontend (HTML + Bootstrap + Jinja2)
+ ↓
+Flask Application
+ ↓
+Business Logic Layer
+ ↓
+SQLAlchemy ORM
+ ↓
+Database
 
-🛠️ Admin Features
-
-Secret admin registration page (localhost-only)
-
-View & manage all users
-
-Change user roles (customer / seller / admin)
-
-Delete users
-
-Manage all products
-
-Manage all orders
-
-Admin dashboard with system stats
-
-🎨 Frontend (HTML + CSS + Bootstrap)
-
-The entire UI is built using:
-
+Recommendation Engine
+ ↓
+ML Model (.pkl)
+ ↓
+Personalized Suggestions
+💻 Tech Stack
+Frontend
 HTML5
-
 CSS3
-
 Bootstrap 5
+Jinja2
+Backend
+Flask
+SQLAlchemy
+Flask Blueprints
+Database
+SQLite
+Machine Learning
+Python
+Recommendation System
+Security
+Password Hashing
+Route Protection
+Role-Based Access
+🔐 Security Implementation
+Secure Password Encryption using Werkzeug
+Authentication & Authorization
+Protected Admin Routes
+Role-Based Access Control
+Secure File Upload Validation
+📂 Project Structure
+Flipkart-Clone/
+│
+├── app/
+│ ├── routes/
+│ ├── models/
+│ ├── services/
+│ └── templates/
+│
+├── static/
+├── uploads/
+├── recommendation/
+├── reco_model.pkl
+├── requirements.txt
+├── app.py
+└── README.md
+⚙️ Installation
+git clone <repository-url>
 
-Responsive components & cards
+cd Flipkart-Clone
 
-Clean, modern Flipkart-style layout
-
-All pages use Jinja2 templates for dynamic rendering.
-
-💻 Backend (Flask + SQLAlchemy)
-
-Flask app factory pattern
-
-SQLAlchemy ORM models
-
-Route-based Blueprints for users, products, orders, admin
-
-Secure password hashing
-
-Role-based route protection
-
-Image upload handling
-
-🤖 Recommendation Engine (Machine Learning)
-Works in 3 Levels:
-
-1️⃣ ML-based recommendations (if reco_model.pkl exists)
-2️⃣ Category-based fallback recommendations
-3️⃣ Latest trending products fallback
-
-Guarantees meaningful product suggestions every time.
-
-🔐 Security
-
-Password hashing using Werkzeug
-
-Authenticated + role-restricted routes
-
-Secure image file handling
-
-Admin route protected by IP restriction
-
-⚙️ How to Run the Project
-1️⃣ Install requirements
 pip install -r requirements.txt
 
-2️⃣ Create the database
-python
-from app import app
-from models import db
-with app.app_context():
-    db.create_all()
+python create_db.py
 
-3️⃣ Start the application
 python app.py
 
+Run:
 
-Visit: http://127.0.0.1:5000
-=======
-# Flipkart-Clone-E-Commerce-Platform
->>>>>>> 2c68d290a20b91e35c7022da8bb9ed130d4ce092
+http://127.0.0.1:5000
+📈 Future Enhancements
+Payment Gateway Integration
+Wishlist & Cart Optimization
+Cloud Deployment
+Docker Containerization
+Analytics Dashboard
+Real-Time Notifications
+Recommendation Model Optimization
+👨‍💻 Author
+
+Yash Ghyar
+BTech — Artificial Intelligence & Data Science
+VIIT Pune
