@@ -2,7 +2,7 @@
 
 ### AI-Powered Full Stack E-Commerce Platform
 
-🚀 **Live Demo:** Add Deployment Link Here
+🚀 **Live Demo:** https://flipkart-clone-e-commerce-platform.vercel.app/
 
 ---
 
